@@ -1,10 +1,7 @@
-// src/App.js
-
 import React, { useState, useEffect } from 'react';
 import './App.css';
 
-// ALTERADO: Use o URL da sua API no Heroku
-const API_URL = "https://todolist-pierry-09218c165de2.herokuapp.com/api/v1/tasks";
+const API_URL = process.env.REACT_APP_API_URL;
 
 function App() {
   const [tasks, setTasks] = useState([]);
@@ -15,14 +12,12 @@ function App() {
   });
   const [editingTaskId, setEditingTaskId] = useState(null);
   
-  // NOVO: Estado para gerenciar mensagens de feedback
   const [message, setMessage] = useState({ type: '', text: '' });
 
   useEffect(() => {
     fetchTasks();
   }, []);
 
-  // Função para exibir uma mensagem e limpá-la após 3 segundos
   const showMessage = (type, text) => {
     setMessage({ type, text });
     setTimeout(() => {
@@ -68,7 +63,6 @@ function App() {
       if (response.ok) {
         resetForm();
         fetchTasks();
-        // ALTERADO: Mensagem de sucesso
         showMessage('success', isEditing ? 'Tarefa atualizada com sucesso!' : 'Tarefa criada com sucesso!');
       } else {
         const errorData = await response.json().catch(() => ({}));
@@ -81,9 +75,7 @@ function App() {
     }
   };
 
-  // ALTERADO: Função de deletar com confirmação e feedback
   const handleDelete = async (taskId) => {
-    // NOVO: Adiciona a janela de confirmação
     const isConfirmed = window.confirm("Você tem certeza que deseja excluir esta tarefa?");
 
     if (isConfirmed) {
@@ -93,15 +85,15 @@ function App() {
         });
 
         if (response.status === 204 || response.ok) {
-          fetchTasks(); // Atualiza a lista
-          showMessage('success', 'Tarefa excluída com sucesso!'); // NOVO: Mensagem de sucesso
+          fetchTasks();
+          showMessage('success', 'Tarefa excluída com sucesso!');
         } else {
           console.error("Erro ao deletar tarefa");
-          showMessage('error', 'Não foi possível excluir a tarefa.'); // NOVO: Mensagem de erro
+          showMessage('error', 'Não foi possível excluir a tarefa.');
         }
       } catch (error) {
         console.error("Erro na requisição:", error);
-        showMessage('error', 'Erro de conexão ao excluir a tarefa.'); // NOVO: Mensagem de erro
+        showMessage('error', 'Erro de conexão ao excluir a tarefa.');
       }
     }
   };
@@ -126,7 +118,6 @@ function App() {
         <h1>Lista de Tarefas</h1>
       </header>
       <main>
-        {/* NOVO: Componente de Mensagem */}
         {message.text && (
           <div className={`message ${message.type}`}>
             {message.text}
@@ -134,7 +125,6 @@ function App() {
         )}
 
         <div className="task-form-container">
-          {/* ... (o formulário continua igual) ... */}
           <form onSubmit={handleSubmit}>
             <h2>{editingTaskId ? 'Editar Tarefa' : 'Adicionar Nova Tarefa'}</h2>
             <input
@@ -169,7 +159,6 @@ function App() {
         <div className="task-list-container">
           <h2>Tarefas Cadastradas</h2>
           <ul className="task-list">
-            {/* ... (a lista de tarefas continua igual) ... */}
             {tasks.map((task) => (
               <li key={task.id} className="task-item">
                 <div className="task-details">

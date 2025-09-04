@@ -1,28 +1,34 @@
 # ToDoList Frontend
 
-Uma aplicação **React** para gerenciamento de tarefas (To-Do List), que consome a [ToDoList API](https://github.com/PierryB/ToDoList-Api).
+Uma aplicação **React** para gerenciamento de tarefas (To-Do List), que consome a [ToDoList API](https://github.com/PierryB/ToDoList-Api), hospedada no **Heroku**.
 
 ## 📝 Descrição
 
-Este projeto é a interface web do gerenciador de tarefas. Ele se comunica com a API RESTful desenvolvida em **Spring Boot**, permitindo que o usuário crie, visualize, atualize e exclua tarefas de forma prática e intuitiva.
+Este projeto é a interface web do gerenciador de tarefas. Ele se conecta diretamente à API para permitir que o usuário crie, visualize, edite e exclua tarefas.  
+A aplicação inclui feedback visual para cada ação realizada (mensagens de sucesso e erro) e confirmação antes da exclusão de tarefas.
 
 ## ✨ Funcionalidades
 
-* **Visualizar Tarefas:** Listar todas as tarefas cadastradas na API.  
+* **Listar Tarefas:** Exibir todas as tarefas cadastradas.  
 * **Criar Tarefa:** Adicionar uma nova tarefa informando título, descrição e prazo.  
-* **Editar Tarefa:** Atualizar os dados de uma tarefa existente.  
-* **Deletar Tarefa:** Remover uma tarefa cadastrada.  
-* **Integração com API:** Toda manipulação de dados é feita via [ToDoList API](https://github.com/PierryB/ToDoList-Api).  
+* **Editar Tarefa:** Alterar os dados de uma tarefa existente.  
+* **Deletar Tarefa:** Remover uma tarefa cadastrada, com confirmação.  
+* **Feedback ao Usuário:** Exibição de mensagens de sucesso ou erro para cada operação.  
 
 ## 🛠️ Tecnologias Utilizadas
 
 As principais tecnologias utilizadas neste projeto são:
 
 * **React** – Biblioteca para construção da interface.  
-* **Vite / Create React App** (dependendo da sua configuração) – Ferramenta para build e desenvolvimento.  
-* **Axios / Fetch API** – Para consumo da API RESTful.  
-* **React Router** – Para navegação entre páginas (se aplicável).  
-* **TailwindCSS / CSS Modules / Styled Components** – Estilização da interface (ajustar conforme seu projeto).  
+* **CSS (App.css)** – Para estilização da aplicação.  
+* **Fetch API** – Para comunicação com a API RESTful.  
+* **Heroku** – Hospedagem da API consumida pelo frontend.  
+
+## 🔗 Integração com a API
+
+A aplicação está configurada para consumir a API hospedada no Heroku:  
+
+Todas as operações (GET, POST, PATCH, DELETE) são feitas a partir desse endpoint.
 
 ## 🚀 Como Executar o Projeto
 
@@ -30,7 +36,6 @@ As principais tecnologias utilizadas neste projeto são:
 
 * Node.js instalado (versão recomendada: LTS).  
 * Gerenciador de pacotes **npm** ou **yarn**.  
-* API [ToDoList](https://github.com/PierryB/ToDoList-Api) rodando localmente ou em ambiente configurado.  
 
 ### Passos
 
@@ -49,26 +54,19 @@ As principais tecnologias utilizadas neste projeto são:
     yarn install
     ```
 
-3. **Configure a URL da API:**
-    No arquivo `.env`, configure a variável de ambiente com a URL da API:
-    ```env
-    VITE_API_URL=http://localhost:8080
-    ```
-
-4. **Execute a aplicação em modo de desenvolvimento:**
+3. **Execute a aplicação em modo de desenvolvimento:**
     ```bash
     # Usando npm
-    npm run dev
+    npm start
 
     # Ou usando yarn
-    yarn dev
+    yarn start
     ```
 
-5. **Acesse no navegador:**
+4. **Acesse no navegador:**
     ```
-    http://localhost:5173
+    http://localhost:3000
     ```
-    (porta padrão do Vite; caso use CRA, será `http://localhost:3000`).
 
 ## 📦 Build para Produção
 
