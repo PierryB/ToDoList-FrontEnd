@@ -1,70 +1,77 @@
-# Getting Started with Create React App
+# ToDoList Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Uma aplicação **React** para gerenciamento de tarefas (To-Do List), que consome a [ToDoList API](https://github.com/PierryB/ToDoList-Api).
 
-## Available Scripts
+## 📝 Descrição
 
-In the project directory, you can run:
+Este projeto é a interface web do gerenciador de tarefas. Ele se comunica com a API RESTful desenvolvida em **Spring Boot**, permitindo que o usuário crie, visualize, atualize e exclua tarefas de forma prática e intuitiva.
 
-### `npm start`
+## ✨ Funcionalidades
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+* **Visualizar Tarefas:** Listar todas as tarefas cadastradas na API.  
+* **Criar Tarefa:** Adicionar uma nova tarefa informando título, descrição e prazo.  
+* **Editar Tarefa:** Atualizar os dados de uma tarefa existente.  
+* **Deletar Tarefa:** Remover uma tarefa cadastrada.  
+* **Integração com API:** Toda manipulação de dados é feita via [ToDoList API](https://github.com/PierryB/ToDoList-Api).  
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 🛠️ Tecnologias Utilizadas
 
-### `npm test`
+As principais tecnologias utilizadas neste projeto são:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+* **React** – Biblioteca para construção da interface.  
+* **Vite / Create React App** (dependendo da sua configuração) – Ferramenta para build e desenvolvimento.  
+* **Axios / Fetch API** – Para consumo da API RESTful.  
+* **React Router** – Para navegação entre páginas (se aplicável).  
+* **TailwindCSS / CSS Modules / Styled Components** – Estilização da interface (ajustar conforme seu projeto).  
 
-### `npm run build`
+## 🚀 Como Executar o Projeto
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Pré-requisitos
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+* Node.js instalado (versão recomendada: LTS).  
+* Gerenciador de pacotes **npm** ou **yarn**.  
+* API [ToDoList](https://github.com/PierryB/ToDoList-Api) rodando localmente ou em ambiente configurado.  
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Passos
 
-### `npm run eject`
+1. **Clone o repositório:**
+    ```bash
+    git clone https://github.com/PierryB/ToDoList-Frontend.git
+    cd ToDoList-Frontend
+    ```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+2. **Instale as dependências:**
+    ```bash
+    # Usando npm
+    npm install
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+    # Ou usando yarn
+    yarn install
+    ```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+3. **Configure a URL da API:**
+    No arquivo `.env`, configure a variável de ambiente com a URL da API:
+    ```env
+    VITE_API_URL=http://localhost:8080
+    ```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+4. **Execute a aplicação em modo de desenvolvimento:**
+    ```bash
+    # Usando npm
+    npm run dev
 
-## Learn More
+    # Ou usando yarn
+    yarn dev
+    ```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+5. **Acesse no navegador:**
+    ```
+    http://localhost:5173
+    ```
+    (porta padrão do Vite; caso use CRA, será `http://localhost:3000`).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## 📦 Build para Produção
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Para gerar os arquivos otimizados para deploy:
+```bash
+npm run build
